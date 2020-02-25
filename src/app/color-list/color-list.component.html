@@ -1,0 +1,16 @@
+<div class="amp-color-list__title">Amplience Brand Colours</div>
+<div class="amp-color-list__list">
+  <div *ngFor="let color of colors.colors"
+    class="amp-color-list__item"
+    [ngClass]="{'amp-color-list__item--highlight': isHover(color)}"
+    (mouseenter)="setHover(color)"
+    (mouseleave)="setHover(null)"
+    (click)="selectColor(color)">
+    <amp-color-preview matRipple
+      [color]="color.color"
+      [matTooltip]="color.name"
+      [ngClass]="{'amp-color-list__color--highlight': isHover(color), 'amp-color-list__color--selected': isSelected(color)}">
+    </amp-color-preview>
+    <div class="amp-color-list__caption">{{color.name}}</div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<amp-color-preview
+  [color]="color == null ? null : color.color"
+  class="amp-chosen-color-summary__color"
+  [style.animationName]="animation">
+</amp-color-preview>
+
+<div class="amp-chosen-color-summary__name" [style.animationName]="animation">
+  {{ color == null ? 'No Colour Selected' : color.name }}
+</div>
+
+<button mat-icon-button aria-label="Remove Colour" (click)="signalDelete()">
+  <mat-icon svgIcon="delete"></mat-icon>
+</button>
+

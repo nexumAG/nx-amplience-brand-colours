@@ -1,0 +1,18 @@
+:host {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #747980;
+  transition: border-color 0.5s;
+  display: inline-block;
+  background-image: linear-gradient(45deg,#ccc 25%,transparent 0,transparent 75%,#ccc 0,#ccc),linear-gradient(45deg,#ccc 25%,transparent 0,transparent 75%,#ccc 0,#ccc);
+  background-size: 13px 13px;
+  background-position: 0 0, 6.5px 6.5px;
+}
+
+.amp-color-preview {
+  &__color {
+    width: 28px;
+    height: 28px;
+    border: 2px solid white;
+  }
+}

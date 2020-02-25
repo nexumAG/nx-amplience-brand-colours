@@ -1,0 +1,31 @@
+:host {
+  display: flex;
+  height: 50px;
+  align-items: center;
+}
+
+@keyframes pulse {
+  from {
+    border-color: #449adf;
+    color: #449adf;
+  }
+  to {
+    border-color: #747980;
+    color: black;
+  }
+}
+
+.amp-chosen-color-summary {
+  &__color {
+    margin: 6px;
+    animation-duration: 1.5s;
+  }
+
+  &__name {
+    padding: 6px;
+    font-size: 16px;
+    flex: 1;
+    user-select: none;
+    animation-duration: 1.5s;
+  }
+}
