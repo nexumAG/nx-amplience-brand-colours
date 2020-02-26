@@ -11,7 +11,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class AppComponent implements OnInit {
 
-  colors: BrandColors = { colors: [] };
+  title: string;
+  colors: BrandColors = { name: '', colors: [] };
   selectedColor: BrandColor;
 
   constructor(private colorSource: BrandColorService, private icons: MatIconRegistry,
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit {
     await this.colorSource.initialize();
     this.colors = this.colorSource.colors;
     this.selectedColor = this.colorSource.selected;
+    this.title = this.colorSource.params.title;
   }
 
   selectColor(color: BrandColor) {

@@ -4,6 +4,7 @@ interface BrandColor {
 }
 
 interface BrandColors {
+  name: string;
   colors: BrandColor[];
 }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { BrandColors, BrandColor } from '../model/brand-colors';
 
 @Component({
@@ -6,17 +6,31 @@ import { BrandColors, BrandColor } from '../model/brand-colors';
   templateUrl: './color-list.component.html',
   styleUrls: ['./color-list.component.scss']
 })
-export class ColorListComponent implements OnInit {
+export class ColorListComponent implements OnInit, OnDestroy {
 
-  @Input('colors') colors: BrandColors;
+  @Input() colors: BrandColors;
   @Input() selectedColor: BrandColor;
   @Output() selection: EventEmitter<BrandColor> = new EventEmitter();
+  @ViewChild('list', { static: true }) list: ElementRef<HTMLDivElement>;
+  containerHeight = '0px';
   hoverColor: BrandColor;
+  expanded = false;
 
+  private listener: (ev: UIEvent) => void;
 
   constructor() { }
 
   ngOnInit() {
+    this.listener = this.windowResized.bind(this);
+    window.addEventListener('resize', this.listener);
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('resize', this.listener);
+  }
+
+  windowResized(event: UIEvent) {
+    this.containerHeight = (this.expanded ? this.list.nativeElement.clientHeight : 0) + 'px';
   }
 
   setHover(color: BrandColor) {
@@ -33,6 +47,12 @@ export class ColorListComponent implements OnInit {
 
   selectColor(color: BrandColor) {
     this.selection.emit(color);
+  }
+
+  toggleExpand() {
+    this.expanded = !this.expanded;
+
+    this.containerHeight = (this.expanded ? this.list.nativeElement.clientHeight : 0) + 'px';
   }
 
 }

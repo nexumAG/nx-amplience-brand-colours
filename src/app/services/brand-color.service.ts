@@ -15,6 +15,7 @@ export class BrandColorService {
   params: BrandColorParameters;
   colors: BrandColors;
   selected: BrandColor;
+  lastHeight: number;
 
   constructor() {
   }
@@ -35,6 +36,8 @@ export class BrandColorService {
     this.sdk = sdk;
 
     this.selected = this.findExistingColor(this.activeColor);
+
+    requestAnimationFrame(this.checkHeight.bind(this));
   }
 
   selectColor(color: BrandColor) {
@@ -49,6 +52,14 @@ export class BrandColorService {
       bColor = { color, name: 'Missing Colour'};
     }
     return bColor;
+  }
+
+  checkHeight() {
+    if (window.document.body.clientHeight !== this.lastHeight) {
+      this.lastHeight = window.document.body.clientHeight;
+      this.sdk.frame.setHeight(this.lastHeight);
+    }
+    requestAnimationFrame(this.checkHeight.bind(this));
   }
 
 }

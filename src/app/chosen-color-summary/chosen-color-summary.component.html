@@ -8,7 +8,10 @@
   {{ color == null ? 'No Colour Selected' : color.name }}
 </div>
 
-<button mat-icon-button aria-label="Remove Colour" (click)="signalDelete()">
+<button mat-icon-button aria-label="Remove Colour"
+  class = "amp-chosen-color-summary__delete"
+  (click)="signalDelete()"
+  [ngClass]="{'amp-chosen-color-summary__delete--hidden': color == null}">
   <mat-icon svgIcon="delete"></mat-icon>
 </button>
 
