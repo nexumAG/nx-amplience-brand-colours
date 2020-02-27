@@ -59,7 +59,7 @@ export class ColorListComponent implements OnInit, OnDestroy {
     if (!this.colors.perRow) {
       return null;
     }
-    return this.colors.perRow * (this.colors.compact ? 60 : 38) + 'px';
+    return this.colors.perRow * (this.colors.compact ? 38 : 60) + 'px';
   }
 
 }
