@@ -38,6 +38,18 @@
   &__list {
     display: flex;
     flex-wrap: wrap;
+
+    &--compact {
+      .amp-color-list__item {
+        padding: 1px;
+        width: 36px;
+        height: 36px;
+      }
+
+      .amp-color-list__caption {
+        display: none;
+      }
+    }
   }
 
   &__item {

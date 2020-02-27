@@ -3,7 +3,7 @@
   {{colors.name}}
 </div>
 <div class="amp-color-list__container" [style.height]="containerHeight">
-  <div class="amp-color-list__list" #list>
+  <div class="amp-color-list__list" #list [ngClass]="{'amp-color-list__list--compact': colors.compact}" [style.maxWidth]="calculateMaxWidth()">
     <div *ngFor="let color of colors.colors"
       class="amp-color-list__item"
       [ngClass]="{'amp-color-list__item--highlight': isHover(color)}"

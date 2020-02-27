@@ -55,4 +55,11 @@ export class ColorListComponent implements OnInit, OnDestroy {
     this.containerHeight = (this.expanded ? this.list.nativeElement.clientHeight : 0) + 'px';
   }
 
+  calculateMaxWidth() {
+    if (!this.colors.perRow) {
+      return null;
+    }
+    return this.colors.perRow * (this.colors.compact ? 60 : 38) + 'px';
+  }
+
 }

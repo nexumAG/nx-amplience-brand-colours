@@ -12,7 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class AppComponent implements OnInit {
 
   title: string;
-  colors: BrandColors = { name: '', colors: [] };
+  colors: BrandColors = { name: '', compact: false, perRow: 0, colors: [] };
   selectedColor: BrandColor;
 
   constructor(private colorSource: BrandColorService, private icons: MatIconRegistry,

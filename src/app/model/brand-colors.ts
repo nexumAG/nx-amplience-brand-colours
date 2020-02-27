@@ -5,6 +5,8 @@ interface BrandColor {
 
 interface BrandColors {
   name: string;
+  perRow: number;
+  compact: boolean;
   colors: BrandColor[];
 }
 
