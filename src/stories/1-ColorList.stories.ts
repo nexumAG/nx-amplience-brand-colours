@@ -30,6 +30,40 @@ function generateColours(count: number): BrandColor[] {
   return result;
 }
 
+export const NormalModeNoColour = () => ({
+  component: ColorListComponent,
+  props: {
+    expanded: true,
+    selection: (color) => action(`Selected colour: ${color}`),
+    colors: {
+      name: 'Normal Mode (no colour)',
+      compact: false,
+      colors: []
+    }
+  },
+});
+
+NormalModeNoColour.story = {
+  name: 'Normal Mode (no colour)',
+};
+
+export const NormalModeOneColour = () => ({
+  component: ColorListComponent,
+  props: {
+    expanded: true,
+    selection: (color) => action(`Selected colour: ${color}`),
+    colors: {
+      name: 'Normal Mode (1 colour)',
+      compact: false,
+      colors: generateColours(1)
+    }
+  },
+});
+
+NormalModeOneColour.story = {
+  name: 'Normal Mode (1 colour)',
+};
+
 export const NormalModeUnlimited = () => ({
   component: ColorListComponent,
   props: {
