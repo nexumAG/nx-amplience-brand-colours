@@ -11,6 +11,7 @@ import { ChosenColorSummaryComponent } from './chosen-color-summary/chosen-color
 import { ColorListComponent } from './color-list/color-list.component';
 import { ColorPreviewComponent } from './color-preview/color-preview.component';
 import { HttpClientModule } from '@angular/common/http';
+import { IconsModule } from './icons.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatTooltipModule,
     MatRippleModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    IconsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

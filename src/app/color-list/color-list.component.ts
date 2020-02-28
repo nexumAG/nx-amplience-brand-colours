@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, OnDestroy, OnChanges } from '@angular/core';
 import { BrandColors, BrandColor } from '../model/brand-colors';
 
 @Component({
@@ -6,15 +6,15 @@ import { BrandColors, BrandColor } from '../model/brand-colors';
   templateUrl: './color-list.component.html',
   styleUrls: ['./color-list.component.scss']
 })
-export class ColorListComponent implements OnInit, OnDestroy {
+export class ColorListComponent implements OnInit, OnDestroy, OnChanges {
 
+  @Input() expanded = false;
   @Input() colors: BrandColors;
   @Input() selectedColor: BrandColor;
   @Output() selection: EventEmitter<BrandColor> = new EventEmitter();
   @ViewChild('list', { static: true }) list: ElementRef<HTMLDivElement>;
   containerHeight = '0px';
   hoverColor: BrandColor;
-  expanded = false;
 
   private listener: (ev: UIEvent) => void;
 
@@ -23,6 +23,13 @@ export class ColorListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.listener = this.windowResized.bind(this);
     window.addEventListener('resize', this.listener);
+    this.updateExpanded();
+  }
+
+  ngOnChanges() {
+    setTimeout(() => {
+      this.updateExpanded();
+    }, 1);
   }
 
   ngOnDestroy() {
@@ -30,7 +37,7 @@ export class ColorListComponent implements OnInit, OnDestroy {
   }
 
   windowResized(event: UIEvent) {
-    this.containerHeight = (this.expanded ? this.list.nativeElement.clientHeight : 0) + 'px';
+    this.updateExpanded();
   }
 
   setHover(color: BrandColor) {
@@ -51,7 +58,10 @@ export class ColorListComponent implements OnInit, OnDestroy {
 
   toggleExpand() {
     this.expanded = !this.expanded;
+    this.updateExpanded();
+  }
 
+  updateExpanded() {
     this.containerHeight = (this.expanded ? this.list.nativeElement.clientHeight : 0) + 'px';
   }
 
@@ -59,7 +69,7 @@ export class ColorListComponent implements OnInit, OnDestroy {
     if (!this.colors.perRow) {
       return null;
     }
-    return this.colors.perRow * (this.colors.compact ? 38 : 60) + 'px';
+    return this.colors.perRow * (this.colors.compact ? 38 : 50) + 'px';
   }
 
 }

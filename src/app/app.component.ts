@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BrandColorService } from './services/brand-color.service';
 import { BrandColors, BrandColor } from './model/brand-colors';
-import { MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'amp-root',
@@ -15,9 +13,7 @@ export class AppComponent implements OnInit {
   colors: BrandColors = { name: '', compact: false, perRow: 0, colors: [] };
   selectedColor: BrandColor;
 
-  constructor(private colorSource: BrandColorService, private icons: MatIconRegistry,
-              private sanitizer: DomSanitizer) {
-    icons.addSvgIcon('delete', sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/ic-asset-delete.svg'));
+  constructor(private colorSource: BrandColorService) {
   }
 
   async ngOnInit() {
