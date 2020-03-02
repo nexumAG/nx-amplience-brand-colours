@@ -70,6 +70,6 @@ void buildApp(buildEnv = 'qa') {
   ansiColor('xterm') {
     def build = "${BRANCH_NAME}".replace("/", "-").replace("%2F", "-")
     def dir = "/dc-extension-brand-colours/${build}/"
-    sh "npm run-script ng -- build --base-href=\"${dir}\""
+    sh "npm run-script ng -- build --prod --base-href=\"${dir}\""
   }
 }
