@@ -6,6 +6,7 @@ import { ColorPreviewComponent } from 'src/app/color-preview/color-preview.compo
 import { BrandColor } from 'src/app/model/brand-colors';
 import { action } from '@storybook/addon-actions';
 import { MatRippleModule } from '@angular/material/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export default {
   title: 'Color List',
@@ -13,7 +14,7 @@ export default {
   decorators: [
     moduleMetadata({
       declarations: [ColorListComponent, ColorPreviewComponent],
-      imports: [MatTooltipModule, MatIconModule, MatRippleModule],
+      imports: [MatTooltipModule, MatIconModule, MatRippleModule, BrowserAnimationsModule],
     }),
   ],
 };

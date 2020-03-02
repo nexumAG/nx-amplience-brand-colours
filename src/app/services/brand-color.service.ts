@@ -25,7 +25,7 @@ export class BrandColorService {
     sdk.frame.startAutoResizer();
 
     const client = new ContentClient({
-      account: (sdk.params.installation as BrandColorParameters).account,
+      account: 'dummy',
       stagingEnvironment: sdk.stagingEnvironment
     });
 
