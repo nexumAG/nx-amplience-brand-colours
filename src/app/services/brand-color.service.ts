@@ -57,7 +57,7 @@ export class BrandColorService {
   findExistingColor(color: string) {
     let bColor = this.colors.colors.find(c => this.getColorKey(c).toLowerCase() === color.toLowerCase());
     if (bColor == null && color != null) {
-      bColor = { color, name: 'Missing Colour'};
+      bColor = { color, name: color };
     }
     return bColor;
   }
