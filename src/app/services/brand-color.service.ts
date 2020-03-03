@@ -21,33 +21,41 @@ export class BrandColorService {
   }
 
   async initialize() {
-    const sdk = await init<string, BrandColorParameters>();
-    sdk.frame.startAutoResizer();
+    try {
+      const sdk = await init<string, BrandColorParameters>();
+      sdk.frame.startAutoResizer();
 
-    const client = new ContentClient({
-      account: 'dummy',
-      stagingEnvironment: sdk.stagingEnvironment
-    });
+      const client = new ContentClient({
+        account: 'dummy',
+        stagingEnvironment: sdk.stagingEnvironment
+      });
 
-    this.activeColor = await sdk.field.getValue();
+      this.activeColor = await sdk.field.getValue();
 
-    this.params = sdk.params.instance as BrandColorParameters;
-    this.colors = (await client.getContentItem(this.params.contentID) as any).body as BrandColors;
-    this.sdk = sdk;
+      this.params = sdk.params.instance as BrandColorParameters;
+      this.colors = (await client.getContentItem(this.params.contentID) as any).body as BrandColors;
+      this.sdk = sdk;
 
-    this.selected = this.findExistingColor(this.activeColor);
+      this.selected = this.findExistingColor(this.activeColor);
 
-    requestAnimationFrame(this.checkHeight.bind(this));
+      requestAnimationFrame(this.checkHeight.bind(this));
+    } catch {
+
+    }
+  }
+
+  private getColorKey(color: BrandColor): string {
+    return this.params.useNames ? color.name : color.color;
   }
 
   selectColor(color: BrandColor) {
-    this.activeColor = color == null ? null : color.color;
+    this.activeColor = color == null ? null : this.getColorKey(color);
     this.sdk.field.setValue(this.activeColor);
     this.selected = color;
   }
 
   findExistingColor(color: string) {
-    let bColor = this.colors.colors.find(c => c.color === color);
+    let bColor = this.colors.colors.find(c => this.getColorKey(c).toLowerCase() === color.toLowerCase());
     if (bColor == null && color != null) {
       bColor = { color, name: 'Missing Colour'};
     }

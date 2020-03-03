@@ -32,6 +32,22 @@ The brand colours extension just wraps around a simple string field.
 }
 ```
 
+If you want to use names rather than the literal colours for values, just include parameter `useNames`:
+
+```json
+{
+  "type": "string",
+  "ui:extension": {
+    "name": "brand-colours",
+    "params": {
+      "title": "title",
+      "contentID": "id-here",
+      "useNames": true
+    }
+  }
+}
+```
+
 ## Storybook
 
 This project uses storybook to allow visual testing and development of the components in a few example contexts. You can start the storybook server by running `npm run storybook`.
