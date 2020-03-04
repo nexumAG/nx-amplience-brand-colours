@@ -27,6 +27,10 @@
         transform: rotate(0deg);
       }
     }
+
+    &--failed {
+      color: darkred;
+    }
   }
 
   &__container {

@@ -1,4 +1,6 @@
-<div class="amp-color-list__title" [ngClass]="{'amp-color-list__title--expanded': expanded}" (click)="toggleExpand()">
+<div class="amp-color-list__title"
+  [ngClass]="{'amp-color-list__title--expanded': expanded, 'amp-color-list__title--failed': colors.failure}"
+  (click)="toggleExpand()">
   <mat-icon>keyboard_arrow_down</mat-icon>
   {{colors.name}}
 </div>

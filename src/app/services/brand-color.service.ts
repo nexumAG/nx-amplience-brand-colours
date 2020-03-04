@@ -13,7 +13,10 @@ export class BrandColorService {
   private sdk: SDK;
   activeColor: string;
   params: BrandColorParameters;
-  colors: BrandColors;
+  colors: BrandColors = {
+    name: 'Loading...',
+    colors: []
+  }
   selected: BrandColor;
   lastHeight: number;
 
@@ -31,6 +34,7 @@ export class BrandColorService {
       });
 
       this.activeColor = await sdk.field.getValue();
+      this.selected = (this.activeColor == null) ? null : { name: this.activeColor, color: this.activeColor };
 
       this.params = sdk.params.instance as BrandColorParameters;
       this.colors = (await client.getContentItem(this.params.contentID) as any).body as BrandColors;
@@ -40,7 +44,11 @@ export class BrandColorService {
 
       requestAnimationFrame(this.checkHeight.bind(this));
     } catch {
-
+      this.colors = {
+        failure: true,
+        name: '(Failed to load colours!)',
+        colors: []
+      };
     }
   }
 
