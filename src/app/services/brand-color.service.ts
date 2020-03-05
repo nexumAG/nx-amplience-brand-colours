@@ -43,10 +43,10 @@ export class BrandColorService {
       this.selected = this.findExistingColor(this.activeColor);
 
       requestAnimationFrame(this.checkHeight.bind(this));
-    } catch {
+    } catch (e) {
       this.colors = {
         failure: true,
-        name: '(Failed to load colours!)',
+        name: '(Failed to load colours: ' + e.toString() + ')',
         colors: []
       };
     }
