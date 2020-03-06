@@ -4,6 +4,7 @@ import { ContentClient } from 'dc-delivery-sdk-js';
 import { BrandColors, BrandColor } from '../model/brand-colors';
 import { BrandColorParameters } from '../model/brand-color-parameters';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
+import { group } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,9 @@ export class BrandColorService {
   params: BrandColorParameters;
   colors: BrandColors = {
     name: 'Loading...',
+    groups: [],
     colors: []
-  }
+  };
   selected: BrandColor;
   lastHeight: number;
 
@@ -40,6 +42,8 @@ export class BrandColorService {
       this.colors = (await client.getContentItem(this.params.contentID) as any).body as BrandColors;
       this.sdk = sdk;
 
+      this.prepareColors();
+
       this.selected = this.findExistingColor(this.activeColor);
 
       requestAnimationFrame(this.checkHeight.bind(this));
@@ -47,9 +51,27 @@ export class BrandColorService {
       this.colors = {
         failure: true,
         name: '(Failed to load colours: ' + e.toString() + ')',
+        groups: [],
         colors: []
       };
     }
+  }
+
+  private prepareColors() {
+    this.colors.colors = this.combineColorGroups(this.params.groups);
+
+    if (this.params.groups != null && this.params.groups.length > 0) {
+      this.colors.name += ` (${ this.params.groups.join(', ') })`;
+    }
+  }
+
+  private combineColorGroups(groups: string[]): BrandColor[] {
+    if (groups == null) {
+      groups = this.colors.groups.map(group => group.name); // When missing, select all groups.
+    }
+    const groupObjs = groups.map(groupName => this.colors.groups.find(group => group.name.toLowerCase() === groupName.toLowerCase()))
+                            .filter(group => group != null);
+    return [].concat.apply([], groupObjs);
   }
 
   private getColorKey(color: BrandColor): string {

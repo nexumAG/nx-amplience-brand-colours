@@ -10,7 +10,7 @@ import { BrandColors, BrandColor } from './model/brand-colors';
 export class AppComponent implements OnInit {
 
   title: string;
-  colors: BrandColors = { name: '', compact: false, perRow: 0, colors: [] };
+  colors: BrandColors = { name: '', compact: false, perRow: 0, colors: [], groups: [] };
   selectedColor: BrandColor;
 
   constructor(private colorSource: BrandColorService) {
