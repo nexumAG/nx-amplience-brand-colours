@@ -70,7 +70,8 @@ export class BrandColorService {
       groups = this.colors.groups.map(group => group.name); // When missing, select all groups.
     }
     const groupObjs = groups.map(groupName => this.colors.groups.find(group => group.name.toLowerCase() === groupName.toLowerCase()))
-                            .filter(group => group != null);
+                            .filter(group => group != null)
+                            .map(group => group.colors);
     return [].concat.apply([], groupObjs);
   }
 
