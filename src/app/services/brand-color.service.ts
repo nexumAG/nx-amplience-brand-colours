@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-import { init, SDK } from 'dc-extensions-sdk';
+import { SDK } from 'dc-extensions-sdk';
 import { ContentClient } from 'dc-delivery-sdk-js';
 import { BrandColors, BrandColor } from '../model/brand-colors';
 import { BrandColorParameters } from '../model/brand-color-parameters';
-import { Content } from '@angular/compiler/src/render3/r3_ast';
-import { group } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +25,9 @@ export class BrandColorService {
 
   async initialize() {
     try {
-      const sdk = await init<string, BrandColorParameters>();
+      // See index.html for sdk init.
+      // tslint:disable-next-line: no-string-literal
+      const sdk: SDK<string, BrandColorParameters> = await window['extensionsSdkInstance'];
       sdk.frame.startAutoResizer();
 
       const client = new ContentClient({
