@@ -1,4 +1,6 @@
-[![Amplience Dynamic Content](header.png)](https://amplience.com/dynamic-content)
+[![Amplience Dynamic Content](media/header.png)](https://amplience.com/dynamic-content)
+
+![Dynamic Content Brand Colours Extension](media/screenshot.png)
 
 # Dynamic Content Brand Colours Extension
 
@@ -46,6 +48,13 @@ If you want to use names rather than the literal colours for values, just includ
     }
   }
 }
+
+The included content schema also lets you split colours into named groups. You can pass in a paramater to select a selection of groups to display the colours for:
+
+`"groups": ["Header", "Common", "Footer"]`
+
+Omitting this parameter will show all colours in the content item.
+
 ```
 
 ## Development and QA with GitHub Pages
