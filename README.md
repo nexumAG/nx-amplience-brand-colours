@@ -54,8 +54,7 @@ You can easily try out this UI extension by adding it to your repository with th
 
 If you've set up your own fork, you can host your own changes on it with gh-pages to make development, experimentation and QA easier.
 
-- Build the project with `npm run build`.
-- Publish to the `gh-pages` branch using `npm run publish`. If you are using remotes, you can target one with `--remote <name>`. See `gh-pages --help` for more options.
+Build and publish to the `gh-pages` branch using `npm run publish`. If you are using remotes, you can target one with `--remote <name>`. See `gh-pages --help` for more options.
 
 Push the `gh-pages` branch to your fork, and then enable github pages on the repository, and you should be all set.
 
