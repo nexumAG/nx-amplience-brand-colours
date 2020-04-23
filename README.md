@@ -17,9 +17,13 @@ The field title and brand colours you desire are passed in via a parameter:
 
 A selected brand colour is stored in the final content item as a string literal containing that colour. Colours can be referenced by either name or literal value, the former being useful when you feel you might change a colour in the future. There is no other identifying information or linking - so a change to an existing brand colour will not update any existing assignments. Also as a result, when there are two identical colours in the set, the extension will *always pick the first name on load!* You have been warned!
 
-## Snippet for Brand Colour Field
+## Brand Colours Schema
 
-The brand colours extension just wraps around a simple string field.
+The schema for the palette content item that this consumes is included as `brandColours.json`. Install it in DC, create some brand colour content items so that you can point this extension at them.
+
+## Snippet for Brand Colour Field and Configuration
+
+The brand colours extension just wraps around a simple string field. The ID for the associated brand colours content item should be provided as a paramater.
 
 ```json
 {
@@ -51,7 +55,11 @@ If you want to use names rather than the literal colours for values, just includ
 
 The included content schema also lets you split colours into named groups. You can pass in a paramater to select a selection of groups to display the colours for:
 
-`"groups": ["Header", "Common", "Footer"]`
+```json
+{
+    "groups": ["Header", "Common", "Footer"]
+}
+```
 
 Omitting this parameter will show all colours in the content item.
 
@@ -70,10 +78,6 @@ Push the `gh-pages` branch to your fork, and then enable github pages on the rep
 ## Storybook
 
 This project uses storybook to allow visual testing and development of the components in a few example contexts. You can start the storybook server by running `npm run storybook`.
-
-## Brand Colours Schema
-
-The schema for the palette content item that this consumes is included as `brandColours.json`. Install it in DC, create some brand colour content items so that you can point this extension at them.
 
 ## Development server
 
