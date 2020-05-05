@@ -15,11 +15,13 @@ The field title and brand colours you desire are passed in via a parameter:
 }
 ```
 
-A selected brand colour is stored in the final content item as a string literal containing that colour. Colours can be referenced by either name or literal value, the former being useful when you feel you might change a colour in the future. There is no other identifying information or linking - so a change to an existing brand colour will not update any existing assignments. Also as a result, when there are two identical colours in the set, the extension will *always pick the first name on load!* You have been warned!
+A selected brand colour is stored in the final content item as a string literal containing that colour. Colours can be referenced by either name or literal value, the former being useful when you feel you might change a colour in the future. 
+
+Note: There is no other identifying information or linking - so a change to an existing brand colour will not update any existing assignments. Also as a result, when there are two identical colours in the set, the extension will *always pick the first name on load!*
 
 ## Brand Colours Schema
 
-The schema for the palette content item that this consumes is included as `brandColours.json`. Install it in DC, create some brand colour content items so that you can point this extension at them.
+The schema for the palette content item that this consumes is included as `brandColours.json`. This is essentially a list of colours that can be chosen from using this extension. Install it in DC, and create some brand colour content items so that you can use them with this extension.
 
 ## Snippet for Brand Colour Field and Configuration
 
@@ -63,13 +65,13 @@ The included content schema also lets you split colours into named groups. You c
 
 Omitting this parameter will show all colours in the content item.
 
-```
-
 ## Development and QA with GitHub Pages
 
 You can easily try out this UI extension by adding it to your repository with the above snippet, and using the build found at https://amplience.github.io/dc-extension-brand-colours/index.html as the url.
 
-If you've set up your own fork, you can host your own changes on it with gh-pages to make development, experimentation and QA easier.
+Note that this for Development and QA purposes only, you should not use this link in a live environment, as the active version may change unexpectedly.
+
+If you've set up your own fork, you can host your own changes on it with gh-pages to make development, experimentation and QA easier, or ensure that the version remains static.
 
 Build and publish to the `gh-pages` branch using `npm run publish`. If you are using remotes, you can target one with `--remote <name>`. See `gh-pages --help` for more options.
 
