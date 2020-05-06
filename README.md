@@ -54,6 +54,7 @@ If you want to use names rather than the literal colours for values, just includ
     }
   }
 }
+```
 
 The included content schema also lets you split colours into named groups. You can pass in a paramater to select a selection of groups to display the colours for:
 
