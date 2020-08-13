@@ -30,15 +30,15 @@ export class BrandColorService {
       const sdk: SDK<string, BrandColorParameters> = await window['extensionsSdkInstance'];
       sdk.frame.startAutoResizer();
 
+      this.activeColor = await sdk.field.getValue();
+      this.selected = (this.activeColor == null) ? null : { name: this.activeColor, color: this.activeColor };
+      this.params = sdk.params.instance as BrandColorParameters;
+
       const client = new ContentClient({
-        account: 'dummy',
+        account: this.params.account || 'dummy',
         stagingEnvironment: sdk.stagingEnvironment
       });
 
-      this.activeColor = await sdk.field.getValue();
-      this.selected = (this.activeColor == null) ? null : { name: this.activeColor, color: this.activeColor };
-
-      this.params = sdk.params.instance as BrandColorParameters;
       this.colors = (await client.getContentItem(this.params.contentID) as any).body as BrandColors;
       this.sdk = sdk;
 

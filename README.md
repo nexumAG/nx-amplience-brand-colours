@@ -27,6 +27,8 @@ The schema for the palette content item that this consumes is included as `brand
 
 The brand colours extension just wraps around a simple string field. The ID for the associated brand colours content item should be provided as a paramater.
 
+If extensions on your repository don't go through a VSE, you also need to provide your account name as `account`. This can be found in the DC frontend URL when logged in.
+
 ```json
 {
   "type": "string",
@@ -34,6 +36,7 @@ The brand colours extension just wraps around a simple string field. The ID for 
     "name": "brand-colours",
     "params": {
       "title": "title",
+      "account": "dummy",
       "contentID": "id-here"
     }
   }
@@ -49,6 +52,7 @@ If you want to use names rather than the literal colours for values, just includ
     "name": "brand-colours",
     "params": {
       "title": "title",
+      "account": "dummy",
       "contentID": "id-here",
       "useNames": true
     }
