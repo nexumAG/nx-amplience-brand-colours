@@ -72,7 +72,7 @@ Omitting this parameter will show all colours in the content item.
 
 ## Development and QA with GitHub Pages
 
-You can easily try out this UI extension by adding it to your repository with the above snippet, and using the build found at https://amplience.github.io/dc-extension-brand-colours/index.html as the url.
+You can easily try out this UI extension by adding it to your repository with the above snippet, and using the build found at https://nexumAG.github.io/nx-amplience-brand-colours/index.html as the url.
 
 Note that this for Development and QA purposes only, you should not use this link in a live environment, as the active version may change unexpectedly.
 

@@ -2,7 +2,7 @@
 node('jnlp-slave-docker') {
 
   def region = 'eu-west-1'
-  def repoSlug = 'dc-extension-brand-colours'
+  def repoSlug = 'nx-amplience-brand-colours'
 
   try {
     stage('Checkout') {
@@ -35,10 +35,10 @@ node('jnlp-slave-docker') {
         stage('App Publish S3') {
           def bucket = 'apps.dev-artifacts.adis.ws'
           def build = "${BRANCH_NAME}".replace("/", "-").replace("%2F", "-")
-          def dir = "dc-extension-brand-colours/${build}" // /${BUILD_NUMBER}"
+          def dir = "nx-amplience-brand-colours/${build}" // /${BUILD_NUMBER}"
 
           withAWS(credentials: 'aws-dev-jenkins-user-type', region: region) {
-            s3Upload(file: 'dist/dc-extension-brand-colours', bucket: bucket, path: dir)
+            s3Upload(file: 'dist/nx-amplience-brand-colours', bucket: bucket, path: dir)
           }
 
           def appUrl = "https://apps.dev-artifacts.adis.ws/${dir}/index.html"
@@ -69,7 +69,7 @@ void insideImage(String imageName, Closure<?> body) {
 void buildApp(buildEnv = 'qa') {
   ansiColor('xterm') {
     def build = "${BRANCH_NAME}".replace("/", "-").replace("%2F", "-")
-    def dir = "/dc-extension-brand-colours/${build}/"
+    def dir = "/nx-amplience-brand-colours/${build}/"
     sh "npm run-script ng -- build --prod --base-href=\"${dir}\""
   }
 }

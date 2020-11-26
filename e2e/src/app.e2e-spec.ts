@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to dc-extension-brand-colours!');
+    expect(page.getTitleText()).toEqual('Welcome to nx-amplience-brand-colours!');
   });
 
   afterEach(async () => {
