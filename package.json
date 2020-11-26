@@ -1,5 +1,5 @@
 {
-  "name": "dc-extension-brand-colours",
+  "name": "nx-amplience-brand-colours",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -10,8 +10,8 @@
     "e2e": "ng e2e",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "bundle-report": "webpack-bundle-analyzer dist/dc-extension-brand-colours/stats-es2015.json",
-    "publish": "ng build --prod --base-href /dc-extension-brand-colours/ && gh-pages -m \"[ci skip] GitHub Pages publish\" -d dist/dc-extension-brand-colours"
+    "bundle-report": "webpack-bundle-analyzer dist/nx-amplience-brand-colours/stats-es2015.json",
+    "publish": "ng build --prod --base-href /nx-amplience-brand-colours/ && gh-pages -m \"[ci skip] GitHub Pages publish\" -d dist/nx-amplience-brand-colours"
   },
   "private": true,
   "dependencies": {
